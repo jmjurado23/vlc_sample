@@ -5,6 +5,7 @@ import java.lang.ref.WeakReference;
 
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
@@ -16,7 +17,9 @@ import android.view.Gravity;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.videolan.libvlc.EventHandler;
@@ -26,16 +29,18 @@ import org.videolan.libvlc.Media;
 import org.videolan.libvlc.MediaList;
 
 public class VideoActivity extends Activity implements SurfaceHolder.Callback,
-        IVideoPlayer {
+        IVideoPlayer, View.OnClickListener {
     public final static String TAG = "LibVLCAndroidSample/VideoActivity";
 
-    public final static String LOCATION = "com.compdigitec.libvlcandroidsample.VideoActivity.location";
+    public final static String LOCATION = "com.example.jjurado.vlc_app.VideoActivity.location";
 
     private String mFilePath;
 
     // display surface
     private SurfaceView mSurface;
     private SurfaceHolder holder;
+    private Button play_button;
+    private Button pause_button;
 
     // media player
     private LibVLC libvlc;
@@ -58,6 +63,10 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback,
 
         Log.d(TAG, "Playing back " + mFilePath);
 
+        play_button = (Button) findViewById(R.id.button_play);
+        pause_button = (Button) findViewById(R.id.button_pause);
+        play_button.setOnClickListener(this);
+        pause_button.setOnClickListener(this);
         mSurface = (SurfaceView) findViewById(R.id.surface);
         holder = mSurface.getHolder();
         holder.addCallback(this);
@@ -203,6 +212,16 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback,
      *************/
 
     private Handler mHandler = new MyHandler(this);
+
+    @Override
+    public void onClick(View view) {
+        if(view.equals(play_button)) {
+            libvlc.play();
+        } else if(view.equals(pause_button)){
+            libvlc.pause();
+        }
+
+    }
 
 
     private static class MyHandler extends Handler {

@@ -1,14 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:baselineAligned="false"
     android:orientation="vertical"
+    android:layout_weight="8"
     tools:context=".SampleActivity" >
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="0dp"
+        android:layout_weight="7">
 
         <SurfaceView
             android:id="@+id/surface"
@@ -16,5 +18,32 @@
             android:layout_height="fill_parent"
             android:layout_gravity="center" />
     </FrameLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_weight="1"
+        android:weightSum="2">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Pause"
+            android:id="@+id/button_pause"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:id="@+id/button_play"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+    </LinearLayout>
 
 </LinearLayout>
