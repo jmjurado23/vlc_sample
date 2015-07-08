@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
     DirectoryAdapter mAdapter;
     LibVLC mLibVLC;
 
-	private final String BIG_H264_FILE_ON_HTTP = "http://archive.org/download/rmE163ArabicSubHdarabRunnersTeamBingutopHangukSib.mkv/rmE163ArabicSubHdarabRunnersTeamBingutopHangukSib.mp4";
+	private final String BIG_H264_FILE_ON_HTTP = "http://techslides.com/demos/sample-videos/small.mp4";
 
     
     View.OnClickListener mSimpleListener = new View.OnClickListener() {
